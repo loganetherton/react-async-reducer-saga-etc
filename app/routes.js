@@ -77,5 +77,6 @@ export default function createRoutes(store) {
         {path: '/dashboard', name: 'dashboard', getComponent: getComponent('dashboard')}
       ]},
     {path: '/login', name: 'login', getComponent: getComponent('login'), onEnter: requiresNoToken},
+    {path: '/stateless', name: 'stateless', getComponent: getComponent('stateless')},
   ];
 }

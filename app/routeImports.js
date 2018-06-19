@@ -15,6 +15,11 @@ const routeImports = {
     import('containers/Dashboard/reducer'),
     import('containers/Dashboard/sagas'),
     import('containers/Dashboard'),
+  ],
+  stateless: () => [
+    import('containers/Stateless/reducer'),
+    import('containers/Stateless/sagas'),
+    import('containers/Stateless'),
   ]
 };
 
