@@ -1,4 +1,4 @@
-export const LOGIN = 'FT/Login/LOGIN';
-export const LOGIN_SUCCESS = 'FT/Login/LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'FT/Login/LOGIN_FAIL';
-export const SET_PROP = 'FT/LOGIN/SET_PROP';
+export const LOGIN = 'devops/Login/LOGIN';
+export const LOGIN_SUCCESS = 'devops/Login/LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'devops/Login/LOGIN_FAIL';
+export const SET_PROP = 'devops/LOGIN/SET_PROP';

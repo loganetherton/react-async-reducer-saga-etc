@@ -13,6 +13,7 @@ import {login, setProp} from './actions';
 import CenterHorizontal from 'components/CenterHorizontal';
 import ContentWrapper from 'components/ContentWrapper';
 import PageHeader from 'components/PageHeader';
+import StatelessButton from 'components/Button';
 
 /**
  * @todo Change all components to React.PureComponent (or even better, stateless functions) before deployment
@@ -23,6 +24,8 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
     this.login = ::this.login;
     this.setField = ::this.setField;
     this.keyUp = ::this.keyUp;
+    this.handleStatelessButtonRoute = ::this.handleStatelessButtonRoute;
+    this.handleStatelessButtonClick = ::this.handleStatelessButtonClick;
   }
 
   /**
@@ -50,6 +53,16 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
     const {value, name} = event.target;
     this.props.onSetProp(value, [name]);
   }
+
+  handleStatelessButtonRoute() {
+    this.props.router.go('/stateless');
+  }
+
+  handleStatelessButtonClick() {
+    console.log('**************CLICK**********');
+    console.log(arguments);
+  }
+
   render() {
     const {login} = this.props;
     return (
@@ -61,6 +74,13 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
           ]}
         />
         {PageHeader('Login', 'Dynamic reducers, sagas, routing, etc')}
+        <Row>
+          <Col sm={ 6 } smOffset={3}>
+            <StatelessButton href="/stateless" handleRoute={this.handleStatelessButtonRoute} onClick={this.handleStatelessButtonClick}>
+            I am stateless
+            </StatelessButton>
+          </Col>
+        </Row>
         <Row>
           <Col sm={ 6 } smOffset={3}>
             <CenterHorizontal>
