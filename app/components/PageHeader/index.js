@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PageHeaderTop = styled.div``;
 
@@ -18,8 +19,8 @@ function PageHeader(header, subTitle) {
 }
 
 PageHeader.propTypes = {
-  header: React.PropTypes.string.isRequired,
-  subTitle: React.PropTypes.string
+  header: PropTypes.string.isRequired,
+  subTitle: PropTypes.string
 };
 
 export default PageHeader;

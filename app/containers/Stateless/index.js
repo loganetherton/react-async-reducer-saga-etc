@@ -1,7 +1,7 @@
 /**
  * Simple stateless route
  */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Row, Col} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';

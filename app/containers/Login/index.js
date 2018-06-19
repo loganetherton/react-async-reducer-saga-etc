@@ -1,7 +1,8 @@
 /**
  * Login container
  */
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Panel, Button, FormControl, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -108,7 +109,6 @@ export class Login extends React.Component { // eslint-disable-line react/prefer
 }
 
 Login.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
 };
 
