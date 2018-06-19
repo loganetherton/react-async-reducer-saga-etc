@@ -37,10 +37,21 @@ function getComponent(injectReducer, injectSagas, container) {
 /**
  * Prevent access if no token
  */
-function requiresToken() {
+function requiresToken(nextState = null) {
   if (!localStorage.getItem('token')) {
     return browserHistory.replace('/login');
   }
+  // Redirect if necessary
+  if (redirect) {
+    const currentState = browserHistory.getCurrentLocation().pathname;
+    if (currentState !== nextState) {
+      return browserHistory.push(nextState);
+    }
+  }
+}
+
+function redirect(state) {
+  return browserHistory.push(state);
 }
 
 /**
@@ -62,7 +73,9 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
   getComponent = getComponent.bind(null, injectReducer, injectSagas);
   return [
-    {path: '/', name: 'app', getComponent: getComponent('app'), onEnter: requiresToken},
+    {path: '/', name: 'app', getComponent: getComponent('app'), onEnter: requiresToken.bind(null, '/dashboard'), childRoutes: [
+        {path: '/dashboard', name: 'dashboard', getComponent: getComponent('dashboard')}
+      ]},
     {path: '/login', name: 'login', getComponent: getComponent('login'), onEnter: requiresNoToken},
   ];
 }

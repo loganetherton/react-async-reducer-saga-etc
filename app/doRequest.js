@@ -88,7 +88,7 @@ function populateOptions(options) {
   options.headers['Content-Type'] = 'application/json';
   // Body
   if (options.body) {
-    options.body = JSON.stringify({data: {attributes: options.body}});
+    options.body = JSON.stringify(options.body);
   }
   // Auth
   const token = localStorage.getItem('token');

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const fileSystem = require('fs');
+const bodyParser = require('body-parser');
 
 const addDevMiddleWare = (app, webpackConfig) => {
   const webpack = require('webpack');
@@ -22,6 +23,8 @@ const addDevMiddleWare = (app, webpackConfig) => {
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
 
+  app.use(bodyParser.json());
+
   // Use filesystem, not memory fs
   const fs = middleware.fileSystem;
 
@@ -37,6 +40,17 @@ const addDevMiddleWare = (app, webpackConfig) => {
     });
   });
 
+  /**
+   * Basic login route
+   */
+  app.post('/api/login', (req, res) => {
+    const {password} = req.body;
+    if (password === '12345') {
+      return res.json({data: {token: '12345'}});
+    }
+    return res.status(400).json({error: 'Incorrect password'});
+  });
+
   app.get('*', (req, res) => {
     fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
       if (err) {
@@ -46,17 +60,6 @@ const addDevMiddleWare = (app, webpackConfig) => {
       }
     });
   });
-};
-
-// Production middlewares
-const addProdMiddlewares = (app, options) => {
-  const publicPath = options.publicPath || '/';
-  const outputPath = options.outputPath || path.resolve(process.cwd(), 'build');
-  
-  app.use(compression());
-  app.use(publicPath, express.static(outputPath));
-
-  app.get('*', (req, res) => res.sendFile(path.resolve(outputPath, 'index.html')));
 };
 
 module.exports = (app) => {

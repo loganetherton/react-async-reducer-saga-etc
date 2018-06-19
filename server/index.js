@@ -22,6 +22,6 @@ app.listen(port, host, (err) => {
     return console.error(err.message);
   }
 
-  console.log('**************APP STARTED**********');
+  console.log('App started');
   console.log(`Running on: ${host}:${port}`);
 });

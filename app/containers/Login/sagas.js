@@ -9,16 +9,16 @@ import {browserHistory} from 'react-router';
 import {LOGIN, LOGIN_SUCCESS, SET_PROP} from 'containers/Login/constants';
 import {loginSuccess, loginFail} from './actions';
 import request from 'doRequest';
-import {makeSelectLoginInfo} from './selectors';
+import {makeSelectLoginCredentials} from './selectors';
 
 /**
  * Handle login requests
  */
 export function* handleLogin() {
   // Select credentials from store
-  const credentials = yield select(makeSelectLoginInfo());
+  const credentials = yield select(makeSelectLoginCredentials());
   const opts = {
-    url: 'auth',
+    url: 'login',
     method: 'POST',
     body: credentials
   };

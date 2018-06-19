@@ -10,6 +10,11 @@ const routeImports = {
     import('containers/Login/reducer'),
     import('containers/Login/sagas'),
     import('containers/Login'),
+  ],
+  dashboard: () => [
+    import('containers/Dashboard/reducer'),
+    import('containers/Dashboard/sagas'),
+    import('containers/Dashboard'),
   ]
 };
 

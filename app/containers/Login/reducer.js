@@ -17,7 +17,7 @@ const errorInterface = {
 const initialState = fromJS({
   username: '',
   password: '',
-  loginSuccess: false,
+  loginFailed: false,
   errors: Object.assign({}, errorInterface)
 });
 
@@ -30,21 +30,22 @@ function loginReducer(state = initialState, action) {
       return state.setIn(action.path, action.value);
     case LOGIN:
       return state
-        .remove('loginSuccess');
+        .set('loginFailed', null);
     case LOGIN_SUCCESS:
-      const token = action.res.attributes.token;
+      const token = action.res.token;
       localStorage.setItem('token', token);
       return state
-        .set('loginSuccess', true)
-        .set('errors', fromJS(errorInterface));
+        .set('loginFailed', false);
     case LOGIN_FAIL:
+      console.log('**************LOGIN FAIL**********');
+      console.log(action);
       const display = {};
       action.errors.map(err => {
         const errKey = err.source.parameter.split(',')[1];
         display[errKey] = _.capitalize(err.title.replace(/this field/i, errKey));
       });
       return state
-        .set('loginSuccess', false)
+        .set('loginFailed', true)
         .set('errors', fromJS(display));
     default:
       return state;

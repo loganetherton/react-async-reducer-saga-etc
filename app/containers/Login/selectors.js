@@ -27,8 +27,20 @@ const makeSelectLoginInfo = () => createSelector(
   })
 );
 
+/**
+ * Credentials for API call
+ */
+const makeSelectLoginCredentials = () => createSelector(
+selectLoginDomain(),
+(substate) => ({
+  email: substate.get('username'),
+  password: substate.get('password')
+})
+);
+
 export default makeSelectLogin;
 export {
   selectLoginDomain,
-  makeSelectLoginInfo
+  makeSelectLoginInfo,
+  makeSelectLoginCredentials
 };
