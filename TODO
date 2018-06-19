@@ -1,0 +1,22 @@
+React Router
+Redux Router
+redux
+Immutable
+
+--FANCY WAY--
+redux-saga
+reselect
+
+--NORMAL WAY--
+redux
+redux-router
+
+Decorators and non
+API callbacks
+GraphQL / Apollo-graphql
+Testing (using Jest/enzyme)
+Sourcemaps
+Docker
+Continuous Integration
+Server-side rendering
+Pure Functions
