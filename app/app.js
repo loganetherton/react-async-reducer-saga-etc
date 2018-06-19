@@ -8,9 +8,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 // Handle scroll behavior in routing
 import { useScroll } from 'react-router-scroll';
 // CSS
-// import 'bootstrap/dist/css/bootstrap.css';
-import './styles/font-awesome/css/font-awesome.css';
-import 'sanitize.css/sanitize.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 // Get root element
 import Root from 'containers/Root';

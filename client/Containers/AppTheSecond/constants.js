@@ -1,1 +1,0 @@
-export const SECOND_APP_CONSTANT = 'app/SECOND_APP_CONSTANT';
