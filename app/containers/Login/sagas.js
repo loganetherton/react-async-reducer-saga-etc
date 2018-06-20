@@ -45,6 +45,11 @@ export function* login() {
   yield cancel(watcher);
 }
 
+export function* test() {
+  console.log('**************SUP**********');
+  yield 'sup';
+}
+
 // Bootstrap sagas
 export default [
   login,

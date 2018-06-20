@@ -5,19 +5,11 @@ import { createStructuredSelector } from 'reselect';
 
 import {makeSelectLocationState, makeSelectApp} from './selectors';
 
-/**
- * @IMPORTANT The connect decorator is not officially supported, and it is in fact considered
- * legacy. I only have it here to demonstrate the way that it works. It is not recommended in production
- */
-@connect(() => (createStructuredSelector({
-  app: makeSelectApp(),
-  location: makeSelectLocationState()
-})), {})
 export class App extends React.Component {
 
   static propTypes = {
     children: PropTypes.node,
-    router: PropTypes.object.isRequired
+    router: PropTypes.object
   };
 
   render() {
@@ -30,13 +22,13 @@ export class App extends React.Component {
   }
 }
 
-// const mapStateToProps = createStructuredSelector({
-//   app: makeSelectApp(),
-//   location: makeSelectLocationState(),
-// });
+const mapStateToProps = createStructuredSelector({
+  app: makeSelectApp(),
+  location: makeSelectLocationState(),
+});
 
-// function mapDispatchToProps(dispatch) {
-//   return {};
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

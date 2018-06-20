@@ -109,6 +109,8 @@ function populateOptions(options) {
  * @return {object}           The response data
  */
 export default function request(options) {
+  console.log('**************OPtions**********');
+  console.log(options);
   options = populateOptions(options);
   return fetch(options.url, options)
     .then(parseJSON)

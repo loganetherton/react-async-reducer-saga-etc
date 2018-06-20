@@ -7,16 +7,17 @@ Immutable
 redux-saga
 reselect
 
---NORMAL WAY--
-redux
-redux-router
+Pure Functions
+API callbacks
 
 Decorators and non
-API callbacks
 GraphQL / Apollo-graphql
 Testing (using Jest/enzyme)
 Sourcemaps
 Docker
 Continuous Integration
 Server-side rendering
-Pure Functions
+
+--NORMAL WAY--
+redux
+redux-router
